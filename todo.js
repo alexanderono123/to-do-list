@@ -23,3 +23,5 @@ function addTodo(){
     
     return;
 }
+
+// TODO make removeTodo(), toggleTodo(), exportTodos() <-- ?
