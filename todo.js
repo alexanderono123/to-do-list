@@ -11,33 +11,20 @@ if(input){
 function addTodo(){
     let to_do_string = document.getElementById("todo").value;
 
-    if(to_do_string) {
-        let ul = document.getElementById("list");
-
-        let li = document.createElement("li");
-        li.className = "todo-unfinished";
-        li.setAttribute('onclick', "toggleTodo(this)");
-
-        let a = document.createElement('a');
-        a.setAttribute('onclick', "removeTodo(this.parentElement)");
-        a.setAttribute('href', "#!");
-
-        let i = document.createElement('i');
-        i.className = "fas fa-trash fa-2x";
-
-        let p = document.createElement('p');
-        p.innerText = to_do_string;
-        
-        li.appendChild(p);
-        li.appendChild(a);
-        a.appendChild(i);
-        ul.appendChild(li);
-
-        document.getElementById("todo").value = "";
-    } else {
+    if(!to_do_string) {
         console.log("Null input");
+        return;
+    } else {
+        let ul = document.getElementById("list");
+        let li = newTodoListElement();
+        let a = newTodoAnchorElement();
+        let i = newTodoIdiomaticElement();
+        let p = newTodoParagraphElement(to_do_string);
+        
+        appendElements(ul, li, a, i, p);
+
+        clearInput();
     }
-    
     return;
 }
 
@@ -56,4 +43,43 @@ function toggleTodo(e){
         e.className = "todo-unfinished"; 
     }
 
+}
+
+function newTodoListElement(){
+    let li = document.createElement("li");
+    li.className = "todo-unfinished";
+    li.setAttribute('onclick', "toggleTodo(this)");
+    return li;
+}
+
+function newTodoAnchorElement(){
+    let a = document.createElement('a');
+    a.setAttribute('onclick', "removeTodo(this.parentElement)");
+    a.setAttribute('href', "#!");
+    return a;
+}
+
+function newTodoIdiomaticElement(){
+    let i = document.createElement('i');
+    i.className = "fas fa-trash fa-2x";
+    return i;
+}
+
+function newTodoParagraphElement(string){
+    let p = document.createElement('p');
+    p.innerText = string;
+    return p;
+}
+
+function appendElements(ul, li, a, i, p){
+    li.appendChild(p);
+    li.appendChild(a);
+    a.appendChild(i);
+    ul.appendChild(li);
+    return;
+}
+
+function clearInput(){
+    document.getElementById("todo").value = "";
+    return;
 }

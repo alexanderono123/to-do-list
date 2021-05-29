@@ -1,12 +1,8 @@
-*{
-    font-family:Arial, Helvetica, sans-serif;
-    /*border: 3px solid green;*/
-}
-
 body{
     margin:auto;
     max-width: 800px;
     min-width:320px;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 h1{
@@ -46,32 +42,23 @@ ul{
     padding: 0;
 }
 
-.todo-unfinished{
+li{
     background-color:#0099ff;
     display:flex;
     padding: 1em;
     margin:0.5em;
     border-radius:1em;
+}
+
+.todo-unfinished{
+    text-decoration:none;
 }
 
 .todo-finished{
-    background-color:#0099ff;
-    display:flex;
-    padding: 1em;
-    margin:0.5em;
-    border-radius:1em;
-    text-decoration: line-through;
+    text-decoration:line-through;
 }
 
-.todo-unfinished p{
-    margin:0;
-    font-size:24px;
-    width:90%;
-    min-height:50px;
-    max-height:150px;
-}
-
-.todo-finished p{
+li p{
     margin:0;
     font-size:24px;
     width:90%;
